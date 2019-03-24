@@ -118,7 +118,7 @@ calSCRwithoutMRInoPreBio <- function(psa, dre_outcome, volume) {
   return(round(PCRS_DRE_noPrebio_ser * 100))
 }
 
-pat_df <- read.csv('sample_data.tsv', header = T, sep = '\t')
+pat_df <- read.csv('/home/chimera/Downloads/ashkan_mri.tsv', header = T, sep = '\t')
 
 pat_df$df.DCRSwithMRI <- ifelse(pat_df$df.prevBiop == 0, calDCRwithMRInoPrebio(pat_df$df.psa, pat_df$df.dre, pat_df$df.dreVol, pat_df$df.age.x, pat_df$df.Tumor1_PIRAD), calDCRwithMRI(pat_df$df.psa, pat_df$df.dre, pat_df$df.dreVol, pat_df$df.age.x, pat_df$df.Tumor1_PIRAD))
 
@@ -126,5 +126,5 @@ pat_df$df.SCRSwithMRI <- ifelse(pat_df$df.prevBiop == 0, calSCRwithMRInoPrebio(p
 
 pat_df$df.DCRSnoMRI <- ifelse(pat_df$df.prevBiop == 0, calDCRwithoutMRInoPreBio(pat_df$df.psa, pat_df$df.dre, pat_df$df.dreVol), calDCRwithoutMRI(pat_df$df.psa, pat_df$df.dre, pat_df$df.dreVol))
 
-pat_df$df.SCRSnoMRI <- ifelse(pat_df$df.prevBiop == 0, calSCRwithoutMRI(pat_df$df.psa, pat_df$df.dre, pat_df$df.dreVol), calSCRwithoutMRI(pat_df$df.psa, pat_df$df.dre, pat_df$df.dreVol))
+pat_df$df.SCRSnoMRI <- ifelse(pat_df$df.prevBiop == 0, calSCRwithoutMRInoPreBio(pat_df$df.psa, pat_df$df.dre, pat_df$df.dreVol), calSCRwithoutMRI(pat_df$df.psa, pat_df$df.dre, pat_df$df.dreVol))
 
